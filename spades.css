@@ -1,0 +1,30 @@
+/* Background gradient for all pages */
+body {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, #ffff, #dddd 40%, #ccc3 100%);
+  background-size: 100%;
+}
+
+/* Accordion on variations.html */
+.accordion img {
+  width: 20%;
+  margin: 1%;
+  transition: 0.5s ease;
+}
+
+.accordion img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: 0.5s ease;
+}
+
+/* Table size on lessons.html */
+#lessons {
+  width: 70%;
+}
+
+/* Center text on login.html */
+input, ::-webkit-input-placeholder {
+  text-align: center;
+}
