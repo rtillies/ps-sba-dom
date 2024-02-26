@@ -12,6 +12,11 @@ body {
   transition: 0.5s ease;
 }
 
+.card .playing {
+  border: 2px solid blue;
+  border-radius: 5%;
+}
+
 .accordion img:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
