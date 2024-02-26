@@ -1,5 +1,6 @@
 const playingCard = document.getElementById('playing-card')
 const cardHistory = document.querySelector('#history')
+const form = document.querySelector('form')
 
 const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
@@ -7,6 +8,8 @@ const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven',
 
 console.log(playingCard);
 console.log(cardHistory);
+console.log(form);
+// toggleReferralCodeField();
 // console.log(cardHistory.children.length);
 
 // let myCard = generateCardImage()
@@ -21,9 +24,12 @@ playingCard.addEventListener('click', function() {
     changeCard()
 })
 
+form.addEventListener('click', function() {
+  toggleReferralCodeField()
+})
+
 function changeCard(event) {
     let card = generateCardImage()
-    // let card = 'spade_12_queen.png'
     let words = parseCardToWords(card)    
     
     playingCard.setAttribute('src', `cards/${card}`)
@@ -48,11 +54,29 @@ function addHistory(card) {
 
     // limit history list to 10 items
     console.log(cardHistory.children.length);
-    if(cardHistory.children.length > 10) {
+    if (cardHistory.children.length > 10) {
         let lastChild = cardHistory.lastElementChild;
         console.log(lastChild);
         cardHistory.removeChild(lastChild)
     }
+}
+
+function toggleReferralCodeField() {
+  const checkbox = document.querySelector('#referralCheck')
+  const referralCodeField = document.querySelector('#referralCode')
+  console.log(checkbox);
+  console.log(referralCodeField);
+  console.log(checkbox.checked);
+  if (checkbox.checked) {
+    console.log("Unlock referral field");
+    console.log(referralCodeField);
+    referralCodeField.disabled = false
+  } else {
+    console.log("LOCK referral field");
+    console.log(referralCodeField);
+    referralCodeField.disabled = true
+    referralCodeField.value = ''
+  }
 }
 
 // for (let i = 0; i < 10; i++) {
