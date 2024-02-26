@@ -16,17 +16,19 @@ console.log(cardHistory);
 // console.log(myCard);
 // console.log(cardWords);
 
-playingCard.addEventListener('click', changeCard())
+playingCard.addEventListener('click', function() {
+    changeCard()
+})
 
-function changeCard() {
-    // let card = generateCardImage()
-    // let words = parseCardToWords(card)    
-    let card = 'spade_12_queen.png'
+function changeCard(event) {
+    let card = generateCardImage()
+    // let card = 'spade_12_queen.png'
     let words = parseCardToWords(card)    
     
     playingCard.setAttribute('src', `cards/${card}`)
     playingCard.setAttribute('alt', words)
     addHistory(words)
+    // return 0
 }
 
 
