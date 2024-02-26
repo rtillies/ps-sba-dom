@@ -4,7 +4,7 @@ const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven',
 for (let i = 0; i < 10; i++) {
     let myCard = generateCardImage()
     let cardWords = parseCardToWords(myCard)
-    
+
     console.log(myCard);
     console.log(cardWords);
 }
@@ -32,6 +32,15 @@ function generateCardImage() {
 }
 
 function parseCardToWords(image) {
+    let parts = image.split('_')
+    let lastPart = parts[parts.length - 1]
+    let rank = lastPart.split('.')[0]
+    parts[parts.length - 1] = rank
+    
+    console.log(`parts: ${parts}`);
+    // console.log(lastPart);
+    // console.log(rank);
+
     if (image.startsWith('joker')) {
         if (image.includes('big')) {
             return 'Big Joker'
@@ -39,6 +48,6 @@ function parseCardToWords(image) {
             return 'Little Joker'
         }
     } else {
-        return 'Regular card'
+        return `${parts[2]} of ${parts[0]}s`
     }
 }
