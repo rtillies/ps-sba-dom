@@ -8,17 +8,25 @@ const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven',
 console.log(playingCard);
 console.log(cardHistory);
 
-let myCard = generateCardImage()
-let cardWords = parseCardToWords(myCard)
-addHistory(cardWords)
-changeCard(myCard, cardWords)
+// let myCard = generateCardImage()
+// let cardWords = parseCardToWords(myCard)
+// addHistory(cardWords)
+// changeCard(myCard, cardWords)
 
 // console.log(myCard);
 // console.log(cardWords);
 
-function changeCard(card, words) {
-    playingCard.setAttribute('src', card)
+playingCard.addEventListener('click', changeCard())
+
+function changeCard() {
+    // let card = generateCardImage()
+    // let words = parseCardToWords(card)    
+    let card = 'spade_12_queen.png'
+    let words = parseCardToWords(card)    
+    
+    playingCard.setAttribute('src', `cards/${card}`)
     playingCard.setAttribute('alt', words)
+    addHistory(words)
 }
 
 
