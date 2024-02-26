@@ -37,12 +37,14 @@ function parseCardToWords(image) {
     let rank = lastPart.split('.')[0]
     parts[parts.length - 1] = rank
     
-    console.log(`parts: ${parts}`);
+    // console.log(`parts: ${parts}`);
     // console.log(lastPart);
     // console.log(rank);
 
-    if (image.startsWith('joker')) {
-        if (image.includes('big')) {
+    // if (image.startsWith('joker')) {
+    //     if (image.includes('big')) {
+    if (parts[0] == 'joker') {
+        if (parts[1] == 'big') {
             return 'Big Joker'
         } else {
             return 'Little Joker'
