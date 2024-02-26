@@ -2,7 +2,11 @@ const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
 
 for (let i = 0; i < 10; i++) {
-    console.log(generateCardImage());
+    let myCard = generateCardImage()
+    let cardWords = parseCardToWords(myCard)
+    
+    console.log(myCard);
+    console.log(cardWords);
 }
 
 
@@ -24,5 +28,17 @@ function generateCardImage() {
         let rr = randomRank < 10 ? '0' + randomRank : randomRank
         let srs = suits[randomSuit]
         return `${srs}_${rr}_${rrr}.png`;
+    }
+}
+
+function parseCardToWords(image) {
+    if (image.startsWith('joker')) {
+        if (image.includes('big')) {
+            return 'Big Joker'
+        } else {
+            return 'Little Joker'
+        }
+    } else {
+        return 'Regular card'
     }
 }
