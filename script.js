@@ -1,13 +1,22 @@
+const playingCard = document.getElementById('playing-card')
+
 const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
 
-for (let i = 0; i < 10; i++) {
-    let myCard = generateCardImage()
-    let cardWords = parseCardToWords(myCard)
 
-    console.log(myCard);
-    console.log(cardWords);
-}
+console.log(playingCard);
+let myCard = generateCardImage()
+let cardWords = parseCardToWords(myCard)
+console.log(myCard);
+console.log(cardWords);
+
+// for (let i = 0; i < 10; i++) {
+//     let myCard = generateCardImage()
+//     let cardWords = parseCardToWords(myCard)
+
+//     console.log(myCard);
+//     console.log(cardWords);
+// }
 
 
 function generateCardImage() {
