@@ -7,6 +7,7 @@ const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven',
 
 console.log(playingCard);
 console.log(cardHistory);
+// console.log(cardHistory.children.length);
 
 // let myCard = generateCardImage()
 // let cardWords = parseCardToWords(myCard)
@@ -45,6 +46,14 @@ function addHistory(card) {
 
     // add new item to add to history
     cardHistory.prepend(li)
+
+    console.log(cardHistory.children.length);
+    if(cardHistory.children.length > 10) {
+        let lastChild = cardHistory.lastElementChild;
+        console.log(lastChild);
+        cardHistory.removeChild(lastChild)
+    }
+
 }
 
 // for (let i = 0; i < 10; i++) {
