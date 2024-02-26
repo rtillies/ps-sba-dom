@@ -32,7 +32,6 @@ function changeCard(event) {
     // return 0
 }
 
-
 function addHistory(card) {
     // remove active class from current active item
     const activeItem = document.querySelector('.list-group-item.active')
@@ -47,13 +46,13 @@ function addHistory(card) {
     // add new item to add to history
     cardHistory.prepend(li)
 
+    // limit history list to 10 items
     console.log(cardHistory.children.length);
     if(cardHistory.children.length > 10) {
         let lastChild = cardHistory.lastElementChild;
         console.log(lastChild);
         cardHistory.removeChild(lastChild)
     }
-
 }
 
 // for (let i = 0; i < 10; i++) {
