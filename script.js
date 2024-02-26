@@ -8,10 +8,28 @@ const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven',
 console.log(playingCard);
 console.log(cardHistory);
 
-// let myCard = generateCardImage()
-// let cardWords = parseCardToWords(myCard)
+let myCard = generateCardImage()
+let cardWords = parseCardToWords(myCard)
+addHistory(cardWords)
+
 // console.log(myCard);
 // console.log(cardWords);
+
+
+function addHistory(card) {
+    // remove active class from current active item
+    const activeItem = document.querySelector('.list-group-item.active')
+    activeItem.classList.remove('active')
+
+    // create new list item
+    const li = document.createElement('li')
+    li.textContent = card
+    li.classList.add('list-group-item')
+    li.classList.add('active')
+
+    // add new item to add to history
+    cardHistory.prepend(li)
+}
 
 // for (let i = 0; i < 10; i++) {
 //     let myCard = generateCardImage()
