@@ -87,11 +87,11 @@
         </div>
       </div>
       <div class="card col-md-3 p-2 m-2">
-        <div class="card-header">
+        <h5 class="card-header">
           Card History
-        </div>
+        </h5>
         <div class="card-body">
-          <ul class="list-group">
+          <ul class="list-group list-group-flush">
             <li class="list-group-item active">An item</li>
             <li class="list-group-item">A second item</li>
             <li class="list-group-item">A third item</li>
@@ -105,20 +105,34 @@
           </ul>
         </div>
       </div>
-      <div class="card col-md-3 p-2 m-2">
-        <img src="images/WSOS21.png" class="card-img-top p-4" alt="World Series of Spades logo">
+      <div class="card col-md-4 p-2 m-2">
+        <h5 class="card-header">
+          Newsletter
+        </h5>
         <div class="card-body">
-          <h5 class="card-title">Follow</h5>
-          <p class="card-text">Visit the websites of spades organizations.</p>
+          <p class="card-text">Sign up for the Black Belt Spades Newsletter!</p>
+          <form>
+            <div class="mb-3">
+              <label for="playerName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="playerName" placeholder="First and Last Name">
+            </div>
+            <div class="mb-3">
+              <label for="playerEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="playerEmail" placeholder="Valid e-mail address">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="referralCheck">
+              <label class="form-check-label" for="referralCheck">I have a referral code</label>
+            </div>
+            <div class="mb-3">
+              <label for="referralPassword" class="form-label">Referral Code</label>
+              <input type="password" class="form-control" id="referralPassword" placeholder="Enter member referral code" disabled>
+              <!-- <div id="referralHelp" class="form-text">Get bonus content with member referral!</div> -->
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <a href="https://www.theworldseriesofspades.com/" target="_blank"  class="text-decoration-none">The World Series of Spades</a>
-          </li>
-          <li class="list-group-item">
-            <a href="https://www.thegameofspades.com/" target="_blank"  class="text-decoration-none">The Game of Spades</a>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
