@@ -5,43 +5,9 @@ body {
   background-size: 100%;
 }
 
-/* Accordion on variations.html */
-.accordion img {
-  width: 20%;
-  margin: 1%;
-  transition: 0.5s ease;
-}
-
-/* .card .playing-card {
-  height: 80%;
-  width: 80%;
-  border: 3px solid cornflowerblue;
-  border-radius: 5%;
-  margin: 20px 0 0 0;
-} */
-
 #playing-card {
-  height: 80%;
   width: 80%;
   border: 3px solid cornflowerblue;
   border-radius: 5%;
   margin: 20px 0 0 0;
-}
-
-
-.accordion img:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-  transition: 0.5s ease;
-}
-
-/* Table size on lessons.html */
-#lessons {
-  width: 70%;
-}
-
-/* Center text on login.html */
-input, ::-webkit-input-placeholder {
-  text-align: center;
 }
