@@ -11,9 +11,15 @@ console.log(cardHistory);
 let myCard = generateCardImage()
 let cardWords = parseCardToWords(myCard)
 addHistory(cardWords)
+changeCard(myCard, cardWords)
 
 // console.log(myCard);
 // console.log(cardWords);
+
+function changeCard(card, words) {
+    playingCard.setAttribute('src', card)
+    playingCard.setAttribute('alt', words)
+}
 
 
 function addHistory(card) {
