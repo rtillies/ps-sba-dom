@@ -11,7 +11,6 @@ let newsText = document.querySelector('newsletter-text')
 const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
 
-
 console.log(playingCard);
 console.log(cardHistory);
 console.log(form);
@@ -45,26 +44,22 @@ submitBtn.addEventListener('click', validate)
 function validate(evt) {
   const nameVal = validateName();
   const emailVal = validateEmail();
-  const referVal = validateRefer();
+  const codeVal = validateCode();
 
-  if (!nameVal || !emailVal || referVal === false) {
+  if (!nameVal || !emailVal || codeVal === false) {
     evt.returnValue = false;
     return false;
   }
 
-  console.log(nameVal, emailVal, referVal);
+  console.log(nameVal, emailVal, codeVal);
 
   let alertText = `
     Name: ${nameVal}
-    Email: ${emailVal}`
-
-  if (checkbox.checked) {
-    alertText += `
-    Code: ${referVal}`
-  }
+    Email: ${emailVal}
+    Code: ${codeVal || 'n/a'}`
 
   alert(alertText)
-  newsText.textContent = 'Newsletter sent!'
+  // newsText.textContent = 'Newsletter sent!'
   // let newsText = document.querySelector('newsletter-text')
 
   // const success = document.createElement('p')
@@ -92,13 +87,17 @@ function validateEmail() {
   return email.value;
 }
 
-function validateRefer() {
+function validateCode() {
   if (checkbox.checked && code.value === "") {
     alert("Please provide a referral code or uncheck the box.");
     code.focus();
     return false;
+  } else if (isNaN(Number(code.value))) {
+    alert("Referral code must be a number");
+    code.focus();
+    return false;
   } else {
-    return code.value.toUpperCase();
+    return code.value;
   }
 }
 
