@@ -5,7 +5,7 @@ const player = form.elements['playerName'];
 const email = form.elements['playerEmail'];
 const checkbox = form.elements['referralCheck'];
 const code = form.elements['referralCode'];
-
+const submitBtn = form.elements['submit-btn'];
 
 const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
@@ -26,45 +26,65 @@ console.log(form);
 // console.log(cardWords);
 
 playingCard.addEventListener('click', function() {
-    changeCard()
+  changeCard()
 })
 
-form.addEventListener('click', function(event) {
+checkbox.addEventListener('click', function(event) {
   toggleReferralCodeField()
 })
 
 form.addEventListener('submit', validate)
-
-// function submitForm() {
-
-// }
+// form.addEventListener('submit', function(event) {
+//   validate()
+// })
 
 function validate(evt) {
-
   const nameVal = validateName();
-  if (nameVal === false) {
+  console.log(nameVal);
+  // if (validateName() === false) {
+  if (!nameVal) {
     evt.returnValue = false;
     return false;
   }
 
   const emailVal = validateEmail();
-  if (emailVal === false) {
+  console.log(emailVal);
+  // if (validateEmail() === false) {
+  if (!emailVal) {
     evt.returnValue = false;
     return false;
   }
 
   const referVal = validateRefer();
+  console.log(referVal);
+  // if (validateRefer() === false) {
   if (referVal === false) {
     evt.returnValue = false;
     return false;
   }
 
-  alert(
-    `Name: ${nameVal}
-    Email: ${emailVal}
-    Referral: ${checkbox.checked}
-    Refer Code: ${referVal.toUpperCase()}`
-  );
+  console.log(nameVal, emailVal, referVal);
+
+  let alertText = `
+    Name: ${nameVal}
+    Email: ${emailVal}`
+
+  if (checkbox.checked) {
+    alertText += `
+    Code: ${referVal.toUpperCase()}`
+  }
+
+  alert(alertText)
+  // alert(`
+  //   Name: ${nameVal}
+  //   Email: ${emailVal}
+  //   Code: ${checkbox.checked}
+  //   Refer Code: ${referVal.toUpperCase()}`
+  // );
+
+  // const success = document.createElement('p')
+  // success.textContent = `Congratulations ${nameVal}! ${emailVal}`
+  // form.appendChild(success)
 
   return true;
 }
@@ -92,11 +112,10 @@ function validateRefer() {
     alert("Please provide a referral code or uncheck the box.");
     code.focus();
     return false;
+  } else {
+    return code.value.toUpperCase();
   }
-  return code.value;
 }
-
-
 
 function changeCard(event) {
     let card = generateCardImage()
@@ -132,20 +151,21 @@ function addHistory(card) {
 }
 
 function toggleReferralCodeField() {
-  const checkbox = document.querySelector('#referralCheck')
-  const referralCodeField = document.querySelector('#referralCode')
-  console.log(checkbox);
-  console.log(referralCodeField);
-  console.log(checkbox.checked);
+  // const checkbox = document.querySelector('#referralCheck')
+  // const referralCodeField = document.querySelector('#referralCode')
+  // console.log(checkbox);
+  // console.log(checkbox.checked);
+  // console.log(code);
+
   if (checkbox.checked) {
     console.log("Unlock referral field");
-    console.log(referralCodeField);
-    referralCodeField.disabled = false
+    // console.log(code);
+    code.disabled = false
   } else {
     console.log("LOCK referral field");
-    console.log(referralCodeField);
-    referralCodeField.disabled = true
-    referralCodeField.value = ''
+    // console.log(code);
+    code.disabled = true
+    code.value = ''
   }
 }
 
@@ -156,7 +176,6 @@ function toggleReferralCodeField() {
 //     console.log(myCard);
 //     console.log(cardWords);
 // }
-
 
 function generateCardImage() {
     let randomRank = Math.floor(Math.random() * 14)
