@@ -6,6 +6,7 @@ const email = form.elements['playerEmail'];
 const checkbox = form.elements['referralCheck'];
 const code = form.elements['referralCode'];
 const submitBtn = form.elements['submit-btn'];
+let newsText = document.querySelector('newsletter-text')
 
 const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
@@ -25,40 +26,28 @@ console.log(form);
 // console.log(myCard);
 // console.log(cardWords);
 
-playingCard.addEventListener('click', function() {
-  changeCard()
-})
+playingCard.addEventListener('click', changeCard)
+// playingCard.addEventListener('click', function() {
+//   changeCard()
+// })
 
-checkbox.addEventListener('click', function(event) {
-  toggleReferralCodeField()
-})
+checkbox.addEventListener('click', toggleReferralCodeField)
+// checkbox.addEventListener('click', function(event) {
+//   toggleReferralCodeField()
+// })
 
-form.addEventListener('submit', validate)
+submitBtn.addEventListener('click', validate)
+// form.addEventListener('submit', validate)
 // form.addEventListener('submit', function(event) {
 //   validate()
 // })
 
 function validate(evt) {
   const nameVal = validateName();
-  console.log(nameVal);
-  // if (validateName() === false) {
-  if (!nameVal) {
-    evt.returnValue = false;
-    return false;
-  }
-
   const emailVal = validateEmail();
-  console.log(emailVal);
-  // if (validateEmail() === false) {
-  if (!emailVal) {
-    evt.returnValue = false;
-    return false;
-  }
-
   const referVal = validateRefer();
-  console.log(referVal);
-  // if (validateRefer() === false) {
-  if (referVal === false) {
+
+  if (!nameVal || !emailVal || referVal === false) {
     evt.returnValue = false;
     return false;
   }
@@ -71,22 +60,18 @@ function validate(evt) {
 
   if (checkbox.checked) {
     alertText += `
-    Code: ${referVal.toUpperCase()}`
+    Code: ${referVal}`
   }
 
   alert(alertText)
-  // alert(`
-  //   Name: ${nameVal}
-  //   Email: ${emailVal}
-  //   Code: ${checkbox.checked}
-  //   Refer Code: ${referVal.toUpperCase()}`
-  // );
+  newsText.textContent = 'Newsletter sent!'
+  // let newsText = document.querySelector('newsletter-text')
 
   // const success = document.createElement('p')
   // success.textContent = `Congratulations ${nameVal}! ${emailVal}`
   // form.appendChild(success)
 
-  return true;
+  // return true;
 }
 
 function validateName() {
@@ -124,7 +109,6 @@ function changeCard(event) {
     playingCard.setAttribute('src', `cards/${card}`)
     playingCard.setAttribute('alt', words)
     addHistory(words)
-    // return 0
 }
 
 function addHistory(card) {
@@ -151,12 +135,6 @@ function addHistory(card) {
 }
 
 function toggleReferralCodeField() {
-  // const checkbox = document.querySelector('#referralCheck')
-  // const referralCodeField = document.querySelector('#referralCode')
-  // console.log(checkbox);
-  // console.log(checkbox.checked);
-  // console.log(code);
-
   if (checkbox.checked) {
     console.log("Unlock referral field");
     // console.log(code);
@@ -168,14 +146,6 @@ function toggleReferralCodeField() {
     code.value = ''
   }
 }
-
-// for (let i = 0; i < 10; i++) {
-//     let myCard = generateCardImage()
-//     let cardWords = parseCardToWords(myCard)
-
-//     console.log(myCard);
-//     console.log(cardWords);
-// }
 
 function generateCardImage() {
     let randomRank = Math.floor(Math.random() * 14)
