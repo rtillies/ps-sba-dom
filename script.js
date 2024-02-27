@@ -1,6 +1,11 @@
 const playingCard = document.getElementById('playing-card')
 const cardHistory = document.querySelector('#history')
 const form = document.querySelector('form')
+const player = form.elements['playerName'];
+const email = form.elements['playerEmail'];
+const checkbox = form.elements['referralCheck'];
+const code = form.elements['referralCode'];
+
 
 const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
@@ -24,9 +29,74 @@ playingCard.addEventListener('click', function() {
     changeCard()
 })
 
-form.addEventListener('click', function() {
+form.addEventListener('click', function(event) {
   toggleReferralCodeField()
 })
+
+form.addEventListener('submit', validate)
+
+// function submitForm() {
+
+// }
+
+function validate(evt) {
+
+  const nameVal = validateName();
+  if (nameVal === false) {
+    evt.returnValue = false;
+    return false;
+  }
+
+  const emailVal = validateEmail();
+  if (emailVal === false) {
+    evt.returnValue = false;
+    return false;
+  }
+
+  const referVal = validateRefer();
+  if (referVal === false) {
+    evt.returnValue = false;
+    return false;
+  }
+
+  alert(
+    `Name: ${nameVal}
+    Email: ${emailVal}
+    Referral: ${checkbox.checked}
+    Refer Code: ${referVal.toUpperCase()}`
+  );
+
+  return true;
+}
+
+function validateName() {
+  if (player.value === "") {
+    alert("Please provide a name.");
+    player.focus();
+    return false;
+  }
+  return player.value;
+}
+
+function validateEmail() {
+  if (email.value === "") {
+    alert("Please provide an email address.");
+    email.focus();
+    return false;
+  }
+  return email.value;
+}
+
+function validateRefer() {
+  if (checkbox.checked && code.value === "") {
+    alert("Please provide a referral code or uncheck the box.");
+    code.focus();
+    return false;
+  }
+  return code.value;
+}
+
+
 
 function changeCard(event) {
     let card = generateCardImage()
