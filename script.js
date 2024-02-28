@@ -1,6 +1,8 @@
 const playingCard = document.getElementById('playing-card')
 const cardHistory = document.querySelector('#history')
 const form = document.querySelector('form')
+const header = document.querySelector('.page-header')
+
 const player = form.elements['playerName'];
 const email = form.elements['playerEmail'];
 const checkbox = form.elements['referralCheck'];
@@ -11,9 +13,34 @@ let newsText = document.querySelector('newsletter-text')
 const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
 
-console.log(playingCard);
-console.log(cardHistory);
-console.log(form);
+// console.log(playingCard);
+// console.log(cardHistory);
+// console.log(form);
+// console.log(header);
+// console.log(getBrowser());
+getBrowser();
+// console.log(window);
+// console.log(window.navigator.appCodeName);
+// console.log(window.navigator.appName);
+// console.log(window.navigator.appVersion);
+// console.log(window.screen);
+
+function getBrowser() {
+  const appVersion = window.navigator.appVersion.split(' ')
+  const version = 
+    (appVersion[appVersion.length - 1]) + ' | ' +
+    (appVersion[appVersion.length - 2])
+
+  const browser = document.createElement('p')
+  browser.innerHTML = `
+    <strong>Browser:</strong> 
+    ${window.navigator.appCodeName} | 
+    ${window.navigator.appName} | 
+    ${version}`
+  
+  header.append(browser)
+}
+
 // toggleReferralCodeField();
 // console.log(cardHistory.children.length);
 
@@ -61,7 +88,7 @@ function validate(evt) {
 
     Referral Code: ${codeVal || 'n/a'}`
 
-  alert(alertText)
+  window.alert(alertText)
   // newsText.textContent = 'Newsletter sent!'
   // let newsText = document.querySelector('newsletter-text')
 
