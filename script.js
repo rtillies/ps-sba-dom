@@ -50,43 +50,19 @@ function validate(evt) {
     return false;
   }
 
-  // console.log(nameVal, emailVal, codeVal);
-  let alertText = `
-    SUCCESS!
-    
-    Thanks for signing up, ${nameVal}!
-    Check your ${emailVal} inbox for this week's newsletter.
-
-    Referral Code: ${codeVal || 'n/a'}`
-
-  // window.alert(alertText)
-  // updateNewsletterPanel(name, email, code)
   updateNewsletterPanel(nameVal, emailVal, codeVal);
-
-
-  // newsText.textContent = 'Newsletter sent!'
-  // let newsText = document.querySelector('newsletter-text')
-
-  // const success = document.createElement('p')
-  // success.textContent = `Congratulations ${nameVal}! ${emailVal}`
-  // form.appendChild(success)
-
-  // return true;
-
 }
 
+// Hide form
+// Update card title and text
 function updateNewsletterPanel(name, email, code) {
-  // const headline = newsletter.getElementsByTagName('h4')[0]
   const headline = newsletter.firstElementChild
   const text = newsletter.getElementsByClassName('newsletter-text')[0]
   const form = newsletter.getElementsByTagName('form')[0]
-  headline.textContent += ' Sent!'
-  // console.log(headline);
-  // console.log(form);
-  // form.remove()
-  form.hidden = true
 
-  // const panelHTML = document.createElement('div')
+  
+  form.hidden = true
+  headline.textContent += ' Sent!'
 
   text.innerHTML = `
   <h5>SUCCESS!</h5>
@@ -102,9 +78,6 @@ function updateNewsletterPanel(name, email, code) {
   <p>
   Referral Code: <b>${code || 'n/a'}</b>
   </p>`
-
-  // console.log(panelHTML)
-  // newsletter.append(panelHTML)
 }
 
 // Validate name field
