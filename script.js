@@ -8,19 +8,20 @@ const email = form.elements['playerEmail'];
 const checkbox = form.elements['referralCheck'];
 const code = form.elements['referralCode'];
 const submitBtn = form.elements['submit-btn'];
-// let newsText = document.querySelector('newsletter-text')
 
 const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
 
-// console.log(playingCard);
-// console.log(cardHistory);
-// console.log(form);
-// console.log(header);
-// console.log(getBrowser());
-getBrowser();
+// Display browser information on the page
+displayBrowser();
 
-function getBrowser() {
+// Event listeners
+playingCard.addEventListener('click', changeCard)
+checkbox.addEventListener('click', toggleReferralCodeField)
+submitBtn.addEventListener('click', validate)
+
+
+function displayBrowser() {
   const appVersion = window.navigator.appVersion.split(' ')
   const version = 
     (appVersion[appVersion.length - 1]) + ' | ' +
@@ -36,33 +37,7 @@ function getBrowser() {
   header.append(browser)
 }
 
-// toggleReferralCodeField();
-// console.log(cardHistory.children.length);
-
-// let myCard = generateCardImage()
-// let cardWords = parseCardToWords(myCard)
-// addHistory(cardWords)
-// changeCard(myCard, cardWords)
-
-// console.log(myCard);
-// console.log(cardWords);
-
-playingCard.addEventListener('click', changeCard)
-// playingCard.addEventListener('click', function() {
-//   changeCard()
-// })
-
-checkbox.addEventListener('click', toggleReferralCodeField)
-// checkbox.addEventListener('click', function(event) {
-//   toggleReferralCodeField()
-// })
-
-// submitBtn.addEventListener('click', validate)
-submitBtn.addEventListener('click', validate)
-// form.addEventListener('submit', function(event) {
-//   validate()
-// })
-
+// Form validation
 function validate(evt) {
   const nameVal = validateName();
   const emailVal = validateEmail();
@@ -84,16 +59,9 @@ function validate(evt) {
     Referral Code: ${codeVal || 'n/a'}`
 
   window.alert(alertText)
-  // newsText.textContent = 'Newsletter sent!'
-  // let newsText = document.querySelector('newsletter-text')
-
-  // const success = document.createElement('p')
-  // success.textContent = `Congratulations ${nameVal}! ${emailVal}`
-  // form.appendChild(success)
-
-  // return true;
 }
 
+// Validate name field
 function validateName() {
   if (player.value === "") {
     alert("Please provide a name.");
@@ -103,6 +71,8 @@ function validateName() {
   return player.value;
 }
 
+// Validate email field
+// Email field also has HTML attribute validation
 function validateEmail() {
   if (email.value === "") {
     alert("Please provide an email address.");
@@ -112,6 +82,10 @@ function validateEmail() {
   return email.value;
 }
 
+// Validate referral code field
+// Disabled until checkbox is checked
+  // Cannot be blank
+  // Must contain only digits
 function validateCode() {
   if (checkbox.checked && code.value === "") {
     alert("Please provide a referral code or uncheck the box.");
@@ -126,6 +100,7 @@ function validateCode() {
   }
 }
 
+// Change playing card in browser
 function changeCard(event) {
     let card = generateCardImage()
     let words = parseCardToWords(card)    
@@ -135,6 +110,7 @@ function changeCard(event) {
     addHistory(words)
 }
 
+// Add card details to history panel
 function addHistory(card) {
     // remove active class from current active item
     const activeItem = document.querySelector('.list-group-item.active')
@@ -158,27 +134,21 @@ function addHistory(card) {
     }
 }
 
+// enable/disable referral code based on checkbox
 function toggleReferralCodeField() {
   if (checkbox.checked) {
-    console.log("Unlock referral field");
-    // console.log(code);
     code.disabled = false
   } else {
-    console.log("LOCK referral field");
-    // console.log(code);
     code.disabled = true
     code.value = ''
   }
 }
 
+// get random playing card
 function generateCardImage() {
     let randomRank = Math.floor(Math.random() * 14)
     let randomSuit = Math.floor(Math.random() * 4)
     let rrr = ranks[randomRank]
-
-    // console.log(randomRank, ranks[randomRank]); // 0-13
-    // console.log(randomSuit, suits[randomSuit]); // 0-4
-    // console.log(randomRank, randomSuit);
 
     if (randomRank == 0) {
         if (randomSuit % 2) // 1 or 3
@@ -192,18 +162,14 @@ function generateCardImage() {
     }
 }
 
+// describe playing card in words
+// e.g. "deuce of spades", "king of diamonds"
 function parseCardToWords(image) {
     let parts = image.split('_')
     let lastPart = parts[parts.length - 1]
     let rank = lastPart.split('.')[0]
     parts[parts.length - 1] = rank
     
-    // console.log(`parts: ${parts}`);
-    // console.log(lastPart);
-    // console.log(rank);
-
-    // if (image.startsWith('joker')) {
-    //     if (image.includes('big')) {
     if (parts[0] == 'joker') {
         if (parts[1] == 'big') {
             return 'Big Joker'
