@@ -35,8 +35,8 @@ checkbox.addEventListener('click', toggleReferralCodeField)
 //   toggleReferralCodeField()
 // })
 
+// submitBtn.addEventListener('click', validate)
 submitBtn.addEventListener('click', validate)
-// form.addEventListener('submit', validate)
 // form.addEventListener('submit', function(event) {
 //   validate()
 // })
@@ -54,9 +54,12 @@ function validate(evt) {
   console.log(nameVal, emailVal, codeVal);
 
   let alertText = `
-    Name: ${nameVal}
-    Email: ${emailVal}
-    Code: ${codeVal || 'n/a'}`
+    SUCCESS!
+    
+    Thanks for signing up, ${nameVal}!
+    Check your ${emailVal} inbox for this week's newsletter.
+
+    Referral Code: ${codeVal || 'n/a'}`
 
   alert(alertText)
   // newsText.textContent = 'Newsletter sent!'
