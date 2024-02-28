@@ -48,8 +48,7 @@ function validate(evt) {
     return false;
   }
 
-  console.log(nameVal, emailVal, codeVal);
-
+  // console.log(nameVal, emailVal, codeVal);
   let alertText = `
     SUCCESS!
     
