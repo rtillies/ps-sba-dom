@@ -8,7 +8,7 @@ const email = form.elements['playerEmail'];
 const checkbox = form.elements['referralCheck'];
 const code = form.elements['referralCode'];
 const submitBtn = form.elements['submit-btn'];
-let newsText = document.querySelector('newsletter-text')
+// let newsText = document.querySelector('newsletter-text')
 
 const suits = ['spade', 'diamond', 'club', 'heart']
 const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
@@ -19,11 +19,6 @@ const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven',
 // console.log(header);
 // console.log(getBrowser());
 getBrowser();
-// console.log(window);
-// console.log(window.navigator.appCodeName);
-// console.log(window.navigator.appName);
-// console.log(window.navigator.appVersion);
-// console.log(window.screen);
 
 function getBrowser() {
   const appVersion = window.navigator.appVersion.split(' ')
