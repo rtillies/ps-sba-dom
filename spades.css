@@ -8,11 +8,11 @@ body {
 .card {
   transition-property: background-color;
   transition-duration: 0.5s;
-  background-color: snow ;
+  background-color: snow;
 }
 
 .card:hover {
-  background-color: #f6f6ff ;
+  background-color: #f6f6ff;
 }
 
 #playing-card {
@@ -22,7 +22,8 @@ body {
   margin: 20px 0 0 0;
 }
 
-#history .active, .btn {
+#history .active,
+.btn {
   font-weight: bold;
   background-color: rebeccapurple;
 }
