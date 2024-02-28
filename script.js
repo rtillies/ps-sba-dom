@@ -67,6 +67,17 @@ function validateName() {
     alert("Please provide a name.");
     player.focus();
     return false;
+  } else {
+    const nameParts = player.value.split(' ') 
+    if (nameParts.length < 2) {
+      alert("Please enter your first and last name.");
+      player.focus();
+      return false;
+    } else if (player.length < 4) {
+      alert("Please enter more than just your initials.");
+      player.focus();
+      return false;
+    }
   }
   return player.value;
 }
