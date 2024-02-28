@@ -2,6 +2,7 @@ const playingCard = document.getElementById('playing-card')
 const cardHistory = document.querySelector('#history')
 const form = document.querySelector('form')
 const header = document.querySelector('.page-header')
+const newsletter = document.querySelector('#newsletter')
 
 const player = form.elements['playerName'];
 const email = form.elements['playerEmail'];
@@ -14,6 +15,7 @@ const ranks = ['joker', 'ace', 'deuce', 'three', 'four', 'five', 'six', 'seven',
 
 // Display browser information on the page
 displayBrowser();
+// updateNewsletterPanel();
 
 // Event listeners
 playingCard.addEventListener('click', changeCard)
@@ -57,7 +59,52 @@ function validate(evt) {
 
     Referral Code: ${codeVal || 'n/a'}`
 
-  window.alert(alertText)
+  // window.alert(alertText)
+  // updateNewsletterPanel(name, email, code)
+  updateNewsletterPanel(nameVal, emailVal, codeVal);
+
+
+  // newsText.textContent = 'Newsletter sent!'
+  // let newsText = document.querySelector('newsletter-text')
+
+  // const success = document.createElement('p')
+  // success.textContent = `Congratulations ${nameVal}! ${emailVal}`
+  // form.appendChild(success)
+
+  // return true;
+
+}
+
+function updateNewsletterPanel(name, email, code) {
+  // const headline = newsletter.getElementsByTagName('h4')[0]
+  const headline = newsletter.firstElementChild
+  const text = newsletter.getElementsByClassName('newsletter-text')[0]
+  const form = newsletter.getElementsByTagName('form')[0]
+  headline.textContent += ' Sent!'
+  // console.log(headline);
+  // console.log(form);
+  // form.remove()
+  form.hidden = true
+
+  // const panelHTML = document.createElement('div')
+
+  text.innerHTML = `
+  <h5>SUCCESS!</h5>
+  
+  <p>
+  Thanks for signing up, <b>${name}</b>!<br />
+  </p>
+
+  <p>
+  Check your <b>${email}</b> inbox for this week's newsletter.
+  </p>
+
+  <p>
+  Referral Code: <b>${code || 'n/a'}</b>
+  </p>`
+
+  // console.log(panelHTML)
+  // newsletter.append(panelHTML)
 }
 
 // Validate name field
