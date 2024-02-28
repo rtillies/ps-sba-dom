@@ -17,10 +17,10 @@ displayBrowser();
 
 // Event listeners
 playingCard.addEventListener('click', changeCard)
-checkbox.addEventListener('click', toggleReferralCodeField)
+checkbox.addEventListener('click', toggleReferralCode)
 submitBtn.addEventListener('click', validate)
 
-
+// Get browser info from window.navigator object
 function displayBrowser() {
   const appVersion = window.navigator.appVersion.split(' ')
   const version = 
@@ -37,7 +37,7 @@ function displayBrowser() {
   header.append(browser)
 }
 
-// Form validation
+// Validate full form
 function validate(evt) {
   const nameVal = validateName();
   const emailVal = validateEmail();
@@ -134,7 +134,7 @@ function addHistory(card) {
 }
 
 // enable/disable referral code based on checkbox
-function toggleReferralCodeField() {
+function toggleReferralCode() {
   if (checkbox.checked) {
     code.disabled = false
   } else {
