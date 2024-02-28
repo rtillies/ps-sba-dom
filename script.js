@@ -83,17 +83,17 @@ function updateNewsletterPanel(name, email, code) {
 // Validate name field
 function validateName() {
   if (player.value === "") {
-    alert("Please provide a name.");
+    window.alert("Please provide a name.");
     player.focus();
     return false;
   } else {
     const nameParts = player.value.split(' ') 
     if (nameParts.length < 2) {
-      alert("Please enter your first and last name.");
+      window.alert("Please enter your first and last name.");
       player.focus();
       return false;
     } else if (player.length < 4) {
-      alert("Please enter more than just your initials.");
+      window.alert("Please enter more than just your initials.");
       player.focus();
       return false;
     }
@@ -105,7 +105,7 @@ function validateName() {
 // Email field also has HTML attribute validation
 function validateEmail() {
   if (email.value === "") {
-    alert("Please provide an email address.");
+    window.alert("Please provide an email address.");
     email.focus();
     return false;
   }
@@ -118,11 +118,11 @@ function validateEmail() {
   // Must contain only digits
 function validateCode() {
   if (checkbox.checked && code.value === "") {
-    alert("Please provide a referral code or uncheck the box.");
+    window.alert("Please provide a referral code or uncheck the box.");
     code.focus();
     return false;
   } else if (isNaN(Number(code.value))) {
-    alert("Referral code must be a number");
+    window.alert("Referral code must be a number");
     code.focus();
     return false;
   } else {
