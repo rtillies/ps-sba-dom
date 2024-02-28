@@ -29,9 +29,8 @@ The third panel provides a (non-functional) form to sign up for a fictional news
   * A tip will appear if the email entered does not meet the "email" HTML attribute validation criteria.
   * The referral code input box is disabled until the user checks the "I have a referral code" checkbox.
   * If the checkbox is checked, an alert error will appear if the referral code field is blank or if the referral code is not a number.
-  * When the form is fully validated, an alert box will appear with a welcome message.
+  * When the form is fully validated, the panel will display a success message to the user.
 
 ### Notes | Blockers
 
-  * Submitting a validated form in the third panel displays an alert box but also resets the page. 
-  * The original goal was to add/change text on the third panel after form submission, and any other changes on the page would persist.
+  * Because the referral code is a "password" field, your browser or password manager may try to save a new login if you check the checkbox and enter a code.
