@@ -102,7 +102,7 @@ function validateCode() {
 
 // Change playing card in browser
 function changeCard(event) {
-    let card = generateCardImage()
+    let card = getRandomCard()
     let words = parseCardToWords(card)    
     
     playingCard.setAttribute('src', `cards/${card}`)
@@ -126,7 +126,6 @@ function addHistory(card) {
     cardHistory.prepend(li)
 
     // limit history list to 10 items
-    console.log(cardHistory.children.length);
     if (cardHistory.children.length > 10) {
         let lastChild = cardHistory.lastElementChild;
         console.log(lastChild);
@@ -145,7 +144,7 @@ function toggleReferralCodeField() {
 }
 
 // get random playing card
-function generateCardImage() {
+function getRandomCard() {
     let randomRank = Math.floor(Math.random() * 14)
     let randomSuit = Math.floor(Math.random() * 4)
     let rrr = ranks[randomRank]
